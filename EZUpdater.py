@@ -61,7 +61,7 @@ def save_json(data):
     with open(LOCAL_FILE_PATH, 'w') as f:
         json.dump(data, f, indent=4)
 
-def update_entry(data, brand, model, new_files=None, new_suffixes=None, delete=False):
+def update_entry(data, brand, model, new_file=None, new_suffix=None, delete=False):
     for entry in data:
         if entry['name'] == brand:
             if delete:
@@ -69,13 +69,13 @@ def update_entry(data, brand, model, new_files=None, new_suffixes=None, delete=F
             else:
                 for phone in entry['phones']:
                     if phone['name'] == model:
-                        if new_files:
-                            phone['files'] = new_files
-                        if new_suffixes:
-                            phone['suffixes'] = new_suffixes
+                        if new_file:
+                            phone['file'] = new_file
+                        if new_suffix:
+                            phone['suffix'] = new_suffix
             return
-    if not delete and new_files and new_suffixes:
-        data.append({'name': brand, 'phones': [{'name': model, 'files': new_files, 'suffixes': new_suffixes}]})
+    if not delete and new_file and new_suffix:
+        data.append({'name': brand, 'phones': [{'name': model, 'file': new_file, 'suffix': new_suffix}]})
 
 def create_backup():
     shutil.copyfile(LOCAL_FILE_PATH, BACKUP_FILE_PATH)
@@ -141,13 +141,13 @@ class App:
         brand = self.selected_brand.get()
         new_model = simpledialog.askstring("Add Model", "Enter new model name:")
         if new_model:
-            new_files = simpledialog.askstring("Add Model Files", "Enter new model files (comma-separated):")
-            new_suffixes = simpledialog.askstring("Add Model Suffixes", "Enter new model suffixes (comma-separated):")
-            new_files_list = [file.strip() for file in new_files.split(',')] if new_files else []
-            new_suffixes_list = [suffix.strip() for suffix in new_suffixes.split(',')] if new_suffixes else []
+            new_file = simpledialog.askstring("Add Model file", "Enter new model file (comma-separated):")
+            new_suffix = simpledialog.askstring("Add Model suffix", "Enter new model suffix (comma-separated):")
+            new_file_list = [file.strip() for file in new_file.split(',')] if new_file else []
+            new_suffix_list = [suffix.strip() for suffix in new_suffix.split(',')] if new_suffix else []
             for entry in self.data:
                 if entry['name'] == brand:
-                    entry['phones'].append({'name': new_model, 'files': new_files_list, 'suffixes': new_suffixes_list})
+                    entry['phones'].append({'name': new_model, 'file': new_file_list, 'suffix': new_suffix_list})
                     entry['phones'] = sorted(entry['phones'], key=lambda x: x['name'])
                     self.model_menu['values'] = [phone['name'] for phone in entry['phones']]
                     break
