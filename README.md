@@ -14,8 +14,8 @@ Phone Book Manager is a Python-based GUI application for managing a phone book s
 ## Requirements
 
 - Python 3.x
-- `tkinter` for the GUI
-- `ftplib` for FTP operations
+- `tkinter` for the GUI (part of the standard library)
+- `ftplib` for FTP operations (part of the standard library)
 
 ## Installation
 
@@ -48,6 +48,22 @@ Phone Book Manager is a Python-based GUI application for managing a phone book s
     - **Delete Model**: Click the "Delete Model" button to remove the selected model.
     - **Create Backup**: Click the "Create Backup" button to create a backup of the phone book.
     - **Save Changes**: Click the "Save Changes" button to save the modifications and upload them to the FTP server.
+
+## Compiling to an Executable on Windows
+
+You can compile the Python script into an executable using `PyInstaller`. Follow the steps below:
+
+1. Install `PyInstaller`:
+    ```bash
+    pip install pyinstaller
+    ```
+
+2. Compile the script into an executable:
+    ```bash
+    pyinstaller --onefile EZUpdater.py
+    ```
+
+3. After the process completes, you will find the executable in the `dist` folder.
 
 ## Contributing
 
