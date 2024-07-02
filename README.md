@@ -60,7 +60,7 @@ You can compile the Python script into an executable using `PyInstaller`. Follow
 
 2. Compile the script into an executable:
     ```bash
-    pyinstaller --onefile EZUpdater.py
+    pyinstaller --onefile --noconsole EZUpdater.py
     ```
 
 3. After the process completes, you will find the executable in the `dist` folder.
