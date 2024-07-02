@@ -21,8 +21,8 @@ Phone Book Manager is a Python-based GUI application for managing a phone book s
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/phone-book-manager.git
-    cd phone-book-manager
+    git clone https://github.com/MMagTech/EZUpdater.git
+    cd EZUpdater
     ```
 
 2. Install the required dependencies:
@@ -49,35 +49,4 @@ Phone Book Manager is a Python-based GUI application for managing a phone book s
     - **Create Backup**: Click the "Create Backup" button to create a backup of the phone book.
     - **Save Changes**: Click the "Save Changes" button to save the modifications and upload them to the FTP server.
 
-## Compiling to an Executable on Windows
-
-You can compile the Python script into an executable using `PyInstaller`. Follow the steps below:
-
-1. Install `PyInstaller`:
-    ```bash
-    pip install pyinstaller
-    ```
-
-2. Compile the script into an executable:
-    ```bash
-    pyinstaller --onefile EZUpdater.py
-    ```
-
-3. After the process completes, you will find the executable in the `dist` folder.
-
-## Contributing
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Commit your changes (`git commit -am 'Add new feature'`).
-4. Push to the branch (`git push origin feature-branch`).
-5. Create a new Pull Request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgements
-
-- This project uses the `tkinter` library for the GUI.
-- The FTP operations are handled using the `ftplib` library.
+## Compiling to an Executable on Win
