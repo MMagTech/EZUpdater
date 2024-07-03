@@ -1,83 +1,96 @@
-# Phone Book Manager
+# EZ Updater
 
-Phone Book Manager is a Python-based GUI application for managing a phone book stored on an FTP server. The application allows you to download the phone book, make modifications, create backups, and upload the changes back to the server.
+## Overview
+
+EZ Updater is a tool designed to manage a phone book JSON file via an FTP server. It provides a user-friendly interface for adding, deleting, and updating brands and models in the phone book. The tool also supports file uploads, where users can add new models and brands by uploading files directly.
 
 ## Features
 
-- **Download Phone Book**: Fetch the phone book data from an FTP server.
-- **View and Select Brands and Models**: Browse through brands and models in the phone book.
-- **Add and Delete Brands and Models**: Easily add or delete brands and models.
-- **Create Backup**: Create a backup of the phone book before making changes.
-- **Save Changes**: Save the modified phone book and upload it to the FTP server.
-- **Alphabetical Order**: Ensure brands and models are displayed in alphabetical order.
+- Add and delete brands and models.
+- Upload files to automatically populate brand and model information.
+- Save changes to the phone book and upload them to an FTP server.
+- Embedded README for instructions.
 
-## Requirements
+## Getting Started
 
-- Python 3.x
-- `tkinter` for the GUI (part of the standard library)
-- `ftplib` for FTP operations (part of the standard library)
+### Initial Setup
 
-## Installation
+1. **FTP Configuration**:
+    - When you first run EZ Updater, you will be prompted to enter the FTP Host, Username, and Password.
+    - You can choose to save these credentials for future use.
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/MMagTech/EZUpdater.git
-    cd EZUpdater
-    ```
+2. **Loading Data**:
+    - The tool will download the current phone book JSON file from the FTP server.
 
-2. Install the required dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
+### Main Interface
 
-## Usage
+- **Brand Selection**:
+    - Select an existing brand from the dropdown menu to manage its models.
+- **Model Selection**:
+    - Select an existing model from the dropdown menu to view or modify it.
 
-1. Run the application:
-    ```bash
-    python EZUpdater.py
-    ```
+### Adding and Deleting Entries
 
-2. **FTP Configuration**: On the first run, you will be prompted to enter your FTP host, username, and password. You have the option to save these credentials for future use.
+- **Add Brand**:
+    - Click the "Add Brand" button and enter the new brand name.
+- **Delete Brand**:
+    - Select a brand from the dropdown and click the "Delete Brand" button.
+- **Add Model**:
+    - Select a brand, click the "Add Model" button, and enter the new model name, file, and suffix information.
+- **Delete Model**:
+    - Select a brand and model, then click the "Delete Model" button.
 
-3. **Main Interface**:
-    - **Select Brand**: Choose a brand from the drop-down menu to view its models.
-    - **Select Model**: Choose a model from the drop-down menu to view or modify it.
-    - **Add Brand**: Click the "Add Brand" button to add a new brand.
-    - **Delete Brand**: Click the "Delete Brand" button to remove the selected brand.
-    - **Add Model**: Click the "Add Model" button to add a new model to the selected brand. You will be prompted to enter the model name, files, and suffixes.
-    - **Delete Model**: Click the "Delete Model" button to remove the selected model.
-    - **Create Backup**: Click the "Create Backup" button to create a backup of the phone book.
-    - **Save Changes**: Click the "Save Changes" button to save the modifications and upload them to the FTP server.
+### Uploading Files
 
-## Compiling to an Executable on Windows
+- Click the "Upload Files" button to select files from your computer.
+- The tool will ensure you select exactly two files, one ending with 'L' and the other with 'R'.
+- The tool will suggest a brand and model name based on the file names.
+- Confirm or edit the suggested names, and the files will be uploaded to the FTP server with their original names.
+- The phone book JSON will be updated with a single entry for the model without the 'L' or 'R' and without the file extension.
 
-You can compile the Python script into an executable using `PyInstaller`. Follow the steps below:
+### Saving Changes
 
-1. Install `PyInstaller`:
-    ```bash
+- Click the "Save Changes" button to save any modifications to the phone book JSON and upload it to the FTP server.
+
+### Creating Backups
+
+- Click the "Create Backup" button to create a backup of the current phone book JSON file.
+
+## Help
+
+- **Open README**:
+    - Click on "Help" in the menu bar and select "Open README" to view this guide.
+
+## Dependencies
+
+- `tkinter`: Used for the GUI.
+- `ftplib`: Used for FTP operations.
+- `json`: Used for JSON file handling.
+- `shutil`: Used for file operations.
+
+## Compiling to an Executable
+
+To compile this script into a standalone executable on Windows, follow these steps:
+
+1. Install `pyinstaller`:
+    ```sh
     pip install pyinstaller
     ```
 
-2. Compile the script into an executable:
-    ```bash
-    pyinstaller --onefile --noconsole EZUpdater.py
+2. Compile the script:
+    ```sh
+    pyinstaller --onefile --windowed EZUpdater.py
     ```
 
-3. After the process completes, you will find the executable in the `dist` folder.
-
-## Contributing
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Commit your changes (`git commit -am 'Add new feature'`).
-4. Push to the branch (`git push origin feature-branch`).
-5. Create a new Pull Request.
+This command will create a single executable file in the `dist` directory.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
+"""
 
-## Acknowledgements
+file_path = "/mnt/data/README.md"
+with open(file_path, "w") as file:
+    file.write(readme_content)
 
-- This project uses the `tkinter` library for the GUI.
-- The FTP operations are handled using the `ftplib` library.
+file_path
